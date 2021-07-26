@@ -1,0 +1,18 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+canvas {
+  background: #cccccc;
+  display: block;
+  margin: 0 auto;
+}
+
+/*# sourceMappingURL=style.css.map */

@@ -53,6 +53,9 @@ function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     drawBall();
+    drawPaddle();
+
+
 
     if(y + dy < 0) {
 
@@ -80,6 +83,27 @@ function draw() {
     x += dx;
     y += dy;
 
+    if(rightPressed) {
+
+        paddleX += 7;
+
+        if (paddleX + paddleWidth > canvas.width) {
+
+            paddleX = canvas.width - paddleWidth;
+
+        };
+    }
+    else if(leftPressed) {
+
+        paddleX -= 7;
+
+        if (paddleX < 0) {
+
+            paddleX = 0;
+
+        };
+    };
+
 };
 
 
@@ -88,6 +112,7 @@ document.addEventListener("keydown", keyDownHandler, false);
 document.addEventListener("keyup", keyUpHandler, false);
 
 
+// Fonction des touches du clavier
 function keyDownHandler(e) {
 
     if(e.key == "Right" || e.key == "ArrowRight") {

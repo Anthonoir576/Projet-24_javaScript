@@ -8,6 +8,9 @@ let y = canvas.height-30;
 let dx = 2;
 let dy = -2;
 
+// Interval
+let interval = setInterval(draw, 10);
+
 // BALL
 let ballRadius = 10;
 
@@ -144,4 +147,3 @@ function keyUpHandler(e) {
 };
 
 
-setInterval(draw, 10);

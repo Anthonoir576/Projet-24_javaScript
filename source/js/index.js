@@ -43,6 +43,12 @@ for(let c = 0; c < brickColumnCount; c++) {
     }
 };
 
+// SCORE
+let score = 0;
+
+
+
+
 // let brickX = (c*(brickWidth+brickPadding))+brickOffsetLeft;
 // let brickY = (r*(brickHeight+brickPadding))+brickOffsetTop;
 
@@ -58,7 +64,6 @@ function drawBall() {
     ctx.closePath();
 
 };
-
 
 // RAQUETTE
 function drawPaddle() {
@@ -104,6 +109,7 @@ function draw() {
     drawBricks();
     drawBall();
     drawPaddle();
+    drawScore();
     collisionDetection();
 
 
@@ -213,9 +219,9 @@ function keyUpHandler(e) {
 // Fonction collision brique
 function collisionDetection() {
 
-    for(let c=0; c<brickColumnCount; c++) {
+    for(let c = 0; c < brickColumnCount; c++) {
 
-        for(let r=0; r<brickRowCount; r++) {
+        for(let r = 0; r < brickRowCount; r++) {
 
             let b = bricks[c][r];
             if(b.status == 1) {
@@ -224,9 +230,26 @@ function collisionDetection() {
 
                     dy = -dy;
                     b.status = 0;
+                    score++;
+                    if (score == brickRowCount*brickColumnCount) {
+
+                        alert("C'est gagné, Bravo!");
+                        document.location.reload();
+                        clearInterval(interval);
+                        
+                    }
 
                 }
             }
         }
     }
+}
+
+// SCORE Collision
+function drawScore() {
+
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("Score: "+score, 8, 20);
+
 }

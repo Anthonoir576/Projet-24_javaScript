@@ -31,7 +31,20 @@ let brickPadding = 10;
 let brickOffsetTop = 30;
 let brickOffsetLeft = 30;
 
+let bricks = [];
+for(let c = 0; c < brickColumnCount; c++) {
 
+    bricks[c] = [];
+
+    for(let r = 0; r < brickRowCount; r++) {
+
+        bricks[c][r] = { x: 0, y: 0 };
+
+    }
+};
+
+// let brickX = (c*(brickWidth+brickPadding))+brickOffsetLeft;
+// let brickY = (r*(brickHeight+brickPadding))+brickOffsetTop;
 
 // FONCTION ################################################
 
@@ -58,6 +71,27 @@ function drawPaddle() {
 
 };
 
+// Brique 
+function drawBricks() {
+
+    for(let c = 0; c < brickColumnCount; c++) {
+
+        for(let r = 0; r < brickRowCount; r++) {
+
+            let brickX = (c*(brickWidth+brickPadding))+brickOffsetLeft;
+            let brickY = (r*(brickHeight+brickPadding))+brickOffsetTop;
+
+            bricks[c][r].x = brickX;
+            bricks[c][r].y = brickY;
+
+            ctx.beginPath();
+            ctx.rect(brickX, brickY, brickWidth, brickHeight);
+            ctx.fillStyle = "#0095DD";
+            ctx.fill();
+            ctx.closePath();
+        }
+    }
+};
 
 // Dessin
 function draw() {

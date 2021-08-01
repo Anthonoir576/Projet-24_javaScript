@@ -46,6 +46,9 @@ for(let c = 0; c < brickColumnCount; c++) {
 // SCORE
 let score = 0;
 
+// Vies du joueur
+let lives = 3;
+
 
 
 
@@ -110,6 +113,7 @@ function draw() {
     drawBall();
     drawPaddle();
     drawScore();
+    drawLives();
     collisionDetection();
 
 
@@ -144,9 +148,22 @@ function draw() {
 
         } else {
 
-            alert("Tu as PERDU !");
-            document.location.reload();
-            clearInterval(interval);
+            lives--;
+            if(!lives) {
+
+                alert("Tu as PERDU !!!!!!");
+                document.location.reload();
+                clearInterval(interval);
+
+            } else {
+
+                x = canvas.width/2;
+                y = canvas.height-30;
+                dx = 2;
+                dy = -2;
+                paddleX = (canvas.width-paddleWidth)/2;
+
+            }
 
         }
 
@@ -263,5 +280,14 @@ function drawScore() {
     ctx.font = "16px Arial";
     ctx.fillStyle = "#0095DD";
     ctx.fillText("Score: "+score, 8, 20);
+
+}
+
+// Vie joueur
+function drawLives() {
+
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("Lives: "+lives, canvas.width-65, 20);
 
 }

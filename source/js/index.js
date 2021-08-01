@@ -183,7 +183,7 @@ function draw() {
 // Listener
 document.addEventListener("keydown", keyDownHandler, false);
 document.addEventListener("keyup", keyUpHandler, false);
-
+document.addEventListener("mousemove", mouseMoveHandler, false);
 
 // Fonction des touches du clavier
 function keyDownHandler(e) {
@@ -216,6 +216,18 @@ function keyUpHandler(e) {
     };
 };
 
+// Detection à la souris 
+function mouseMoveHandler(e) {
+
+    let relativeX = e.clientX - canvas.offsetLeft;
+
+    if(relativeX > 0 && relativeX < canvas.width) {
+
+        paddleX = relativeX - paddleWidth/2;
+
+    }
+};
+
 // Fonction collision brique
 function collisionDetection() {
 
@@ -236,7 +248,7 @@ function collisionDetection() {
                         alert("C'est gagné, Bravo!");
                         document.location.reload();
                         clearInterval(interval);
-                        
+
                     }
 
                 }

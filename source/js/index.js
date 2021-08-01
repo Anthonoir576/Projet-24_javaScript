@@ -81,12 +81,20 @@ function draw() {
 
         dy = -dy;
 
-    } else if(y + dy > canvas.height-ballRadius) {
+    } else if (y + dy > canvas.height-ballRadius) {
 
-        alert("GAME OVER");
-        document.location.reload();
-        clearInterval(interval); 
-        
+        if (x > paddleX && x < paddleX + paddleWidth) {
+
+            dy = -dy;
+
+        } else {
+
+            alert("Tu as PERDU !");
+            document.location.reload();
+            clearInterval(interval);
+
+        }
+
     }
     
 
